@@ -5,14 +5,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
-@Getter
 @Setter
+@Getter
 public class Order {
     private String orderId;
     private String customerId;
-    private LocalDateTime orderDate;
+    private LocalDate orderDate;
     private String productName;
     private String category;
     private BigDecimal unitPrice;
@@ -20,7 +20,7 @@ public class Order {
 
     public  Order() {}
 
-    public Order(String orderId, String customerId, LocalDateTime orderDate, String productName, String category, BigDecimal unitPrice, int quantity) {
+    public Order(String orderId, String customerId, LocalDate orderDate, String productName, String category, BigDecimal unitPrice, int quantity) {
         this.orderId = orderId;
         this.customerId = customerId;
         this.orderDate = orderDate;
@@ -29,4 +29,5 @@ public class Order {
         this.unitPrice = unitPrice;
         this.quantity = quantity;
     }
+
 }
