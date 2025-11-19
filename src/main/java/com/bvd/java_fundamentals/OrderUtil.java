@@ -4,10 +4,8 @@ import com.bvd.java_fundamentals.model.Order;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.time.LocalDateTime;
+import java.util.*;
 
 /*
  * Implement the methods below so that the requirements are met.
@@ -19,8 +17,23 @@ public class OrderUtil {
 
     // retrieve orders from csv lines
     public static List<Order> parseCsvLines(final List<String> lines) {
-        // Write your code here and replace the return statement
-        return Collections.emptyList();
+        if(lines == null || lines.isEmpty()) {
+            return Collections.emptyList();
+        }
+        List<Order> orders = new ArrayList<>();
+        for(String line : lines) {
+            String[] fields = line.split(",", -1);
+            try{
+                orders.add(new Order(fields[0],
+                        fields[1],
+                        LocalDateTime.parse(fields[2]),
+                        fields[3],
+                        fields[4],
+                        BigDecimal.valueOf(Long.parseLong(fields[5])),
+                        Integer.parseInt(fields[6])));
+            }catch(Exception ignored){}
+        }
+        return orders;
     }
 
     // calculate revenue by day
